@@ -2,4 +2,4 @@ pipeline:
   build:
     image: docker
     commands:
-      - docker build
+      - docker build -t drone-test .

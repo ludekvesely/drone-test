@@ -6,3 +6,9 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+services:
+  redis:
+    image: redis:latest
+  mongo:
+    image: mongo:3.2.4
+

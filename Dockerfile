@@ -1,5 +1,16 @@
-FROM alpine
+FROM atoto/docker-nginx-php-stack
 
-RUN apk --update add vim
+COPY composer.json composer.lock /var/www/html/
+COPY app/AppCache.php app/AppKernel.php /var/www/html/app/
 
-RUN echo yes-yes
+RUN composer install --no-dev --no-scripts --optimize-autoloader
+
+ADD . /var/www/html
+
+RUN rm -fr var/* && \
+	mkdir -p var var/logs var/temp var/cache && \
+	chown -R www-data:www-data /var/www/* && \
+	chmod -R 777 var/*
+
+USER www-data
+

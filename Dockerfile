@@ -7,6 +7,8 @@ RUN composer install --no-dev --no-scripts --optimize-autoloader
 
 ADD . /var/www/html
 
+USER root
+
 RUN rm -fr var/* && \
 	mkdir -p var var/logs var/temp var/cache && \
 	chown -R www-data:www-data /var/www/* && \

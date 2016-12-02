@@ -2,6 +2,8 @@ pipeline:
   build:
     image: docker:1.11
     commands:
+      - apk --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --update add php7 php7-mbstring php7-session php7-json php7-ctype php7-curl php7-xml php7-xmlreader php7-mysqlnd php7-mcrypt php7-bcmath php7-openssl php7-pdo php7-pdo_mysql php7-common php7-posix
+      - phpunit
       - docker build -t drone-test .
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

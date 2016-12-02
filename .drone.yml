@@ -8,6 +8,7 @@ pipeline:
       - docker build -t drone-test .
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/.composer:/root/.composer
 
 services:
   redis:

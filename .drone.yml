@@ -1,6 +1,6 @@
 pipeline:
   build:
-    image: docker
+    image: docker:1.23
     commands:
       - docker build -t drone-test .
     volumes:

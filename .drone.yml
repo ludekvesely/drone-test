@@ -3,7 +3,7 @@ pipeline:
     image: docker:1.11
     commands:
       - apk --update add php5 php5-openssl php5-phar php5-json php5-zlib && php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php && php composer-setup.php && php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
-      - composer install
+      - composer install --ignore-platform-reqs --no-scripts
       - vendor/bin/phpunit
       - docker build -t drone-test .
     volumes:
